@@ -52,7 +52,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
         empty($where) ?: $params['where'] = json_encode($where);
         empty($order) ?: $params['order'] = json_encode($order);
 
-        return $this->get($this->getPath().'/filter', $params);
+        return $this->get($this->getPath() . '/filter', $params);
     }
 
     /**
@@ -89,7 +89,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      * @link https://fr.textmaster.com/documentation#projects-update-a-project
      *
      * @param string $projectId
-     * @param array  $params
+     * @param array $params
      *
      * @return array
      */
@@ -109,7 +109,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function cancel($projectId)
     {
-        return $this->put($this->getPath($projectId).'/cancel');
+        return $this->put($this->getPath($projectId) . '/cancel');
     }
 
     /**
@@ -123,7 +123,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function archive($projectId)
     {
-        return $this->put($this->getPath($projectId).'/archive');
+        return $this->put($this->getPath($projectId) . '/archive');
     }
 
     /**
@@ -137,7 +137,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function unarchive($projectId)
     {
-        return $this->put($this->getPath($projectId).'/unarchive');
+        return $this->put($this->getPath($projectId) . '/unarchive');
     }
 
     /**
@@ -151,7 +151,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function pause($projectId)
     {
-        return $this->put($this->getPath($projectId).'/pause');
+        return $this->put($this->getPath($projectId) . '/pause');
     }
 
     /**
@@ -165,7 +165,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function resume($projectId)
     {
-        return $this->put($this->getPath($projectId).'/resume');
+        return $this->put($this->getPath($projectId) . '/resume');
     }
 
     /**
@@ -179,7 +179,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function finalize($projectId)
     {
-        return $this->put($this->getPath($projectId).'/finalize');
+        return $this->put($this->getPath($projectId) . '/finalize');
     }
 
     /**
@@ -193,7 +193,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function launch($projectId)
     {
-        return $this->post($this->getPath($projectId).'/async_launch');
+        return $this->post($this->getPath($projectId) . '/async_launch');
     }
 
     /**
@@ -207,7 +207,7 @@ class Project extends AbstractApi implements ObjectApiInterface, FilterableApiIn
      */
     public function quote(array $params)
     {
-        return $this->get($this->getPath().'/quotation', ['project' => $params]);
+        return $this->get($this->getPath() . '/quotation', ['project' => $params]);
     }
 
     /**

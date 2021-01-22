@@ -13,11 +13,12 @@ namespace Textmaster\Unit\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\TestCase;
 use Textmaster\Api\AbstractApi;
 use Textmaster\HttpClient\HttpClient;
 use Textmaster\HttpClient\HttpClientInterface;
 
-class AbstractApiTest extends \PHPUnit_Framework_TestCase
+class AbstractApiTest extends TestCase
 {
     /**
      * @test

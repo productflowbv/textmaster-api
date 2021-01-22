@@ -11,11 +11,12 @@
 
 namespace Textmaster\Unit\Translator\Provider;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Exception\MappingNotFoundException;
 use Textmaster\Translator\Provider\ChainedMappingProvider;
 use Textmaster\Unit\Mock\MockTranslatable;
 
-class ChainedMappingProviderTest extends \PHPUnit_Framework_TestCase
+class ChainedMappingProviderTest extends TestCase
 {
     /**
      * @test
@@ -44,10 +45,10 @@ class ChainedMappingProviderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\MappingNotFoundException
      */
     public function shouldNotGetProperties()
     {
+        $this->expectException(MappingNotFoundException::class);
         $providerMock1 = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');
         $providerMock2 = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');
         $providers = [$providerMock1, $providerMock2];

@@ -41,6 +41,6 @@ class Template extends AbstractApi
      */
     public function byName($name)
     {
-        return $this->get('clients/work_templates/'.rawurlencode($name));
+        return $this->get('clients/work_templates/' . rawurlencode($name));
     }
 }

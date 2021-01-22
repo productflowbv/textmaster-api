@@ -44,7 +44,7 @@ class Locale extends AbstractApi
      */
     public function referencePricings($locale)
     {
-        return $this->get('public/reference_pricings/'.rawurlencode($locale));
+        return $this->get('public/reference_pricings/' . rawurlencode($locale));
     }
 
     /**
@@ -60,6 +60,6 @@ class Locale extends AbstractApi
      */
     public function countries($locale)
     {
-        return $this->get('public/countries/'.rawurlencode($locale));
+        return $this->get('public/countries/' . rawurlencode($locale));
     }
 }

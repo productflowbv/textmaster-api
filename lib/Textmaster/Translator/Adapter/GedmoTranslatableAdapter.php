@@ -11,7 +11,7 @@
 
 namespace Textmaster\Translator\Adapter;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Gedmo\Translatable\TranslatableListener;
 
 class GedmoTranslatableAdapter extends AbstractDoctrineAdapter

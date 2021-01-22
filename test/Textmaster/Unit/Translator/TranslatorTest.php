@@ -11,10 +11,13 @@
 
 namespace Textmaster\Unit\Translator;
 
+use PHPUnit\Framework\TestCase;
+use Textmaster\Exception\BadMethodCallException;
+use Textmaster\Exception\InvalidArgumentException;
 use Textmaster\Exception\UnexpectedTypeException;
 use Textmaster\Translator\Translator;
 
-class TranslatorTest extends \PHPUnit_Framework_TestCase
+class TranslatorTest extends TestCase
 {
     /**
      * @test
@@ -172,10 +175,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotCreate()
     {
+        $this->expectException(InvalidArgumentException::class);
         $adapterMock = $this->createMock('Textmaster\Translator\Adapter\AdapterInterface');
         $mappingProviderMock = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');
         $adapters = [$adapterMock];
@@ -197,10 +200,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotComplete()
     {
+        $this->expectException(InvalidArgumentException::class);
         $mappingProviderMock = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');
         $adapters = [];
 
@@ -212,10 +215,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotCreateFromFactory()
     {
+        $this->expectException(InvalidArgumentException::class);
         $adapterMock = $this->createMock('Textmaster\Translator\Adapter\AdapterInterface');
         $mappingProviderMock = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');
         $adapters = [$adapterMock];
@@ -228,10 +231,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotGetSubjectFromDocument()
     {
+        $this->expectException(InvalidArgumentException::class);
         $adapterMock1 = $this->createMock('Textmaster\Translator\Adapter\AdapterInterface');
         $adapterMock2 = $this->createMock('Textmaster\Translator\Adapter\AdapterInterface');
         $mappingProviderMock = $this->createMock('Textmaster\Translator\Provider\MappingProviderInterface');

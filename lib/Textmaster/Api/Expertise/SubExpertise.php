@@ -25,7 +25,7 @@ class SubExpertise extends AbstractApi
      *
      * @link https://fr.textmaster.com/documentation#expertises-listing-sub-expertises
      *
-     * @param string      $expertiseId
+     * @param string $expertiseId
      * @param null|string $locale
      *
      * @return array
@@ -46,8 +46,8 @@ class SubExpertise extends AbstractApi
      *
      * @link https://fr.textmaster.com/documentation#expertises-get-a-sub-expertise
      *
-     * @param string      $expertiseId
-     * @param string      $subExpertiseId
+     * @param string $expertiseId
+     * @param string $subExpertiseId
      * @param null|string $locale
      *
      * @return array
@@ -60,7 +60,7 @@ class SubExpertise extends AbstractApi
             $params['locale'] = $locale;
         }
 
-        return $this->get($this->getPath($expertiseId).'/'.rawurlencode($subExpertiseId), $params);
+        return $this->get($this->getPath($expertiseId) . '/' . rawurlencode($subExpertiseId), $params);
     }
 
     /**

@@ -11,7 +11,7 @@
 
 namespace Textmaster;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Textmaster\Api\ApiInterface;
@@ -77,7 +77,9 @@ class Client
      */
     public function api($name)
     {
-        $name = Inflector::singularize($name);
+        $inflector = InflectorFactory::create()->build();
+
+        $name = $inflector->singularize($name);
         $apis = [
             'apiTemplate',
             'author',

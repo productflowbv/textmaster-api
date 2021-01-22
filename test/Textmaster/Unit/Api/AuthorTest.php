@@ -11,6 +11,8 @@
 
 namespace Textmaster\Unit\Api;
 
+use Textmaster\Exception\InvalidArgumentException;
+
 class AuthorTest extends TestCase
 {
     /**
@@ -45,10 +47,10 @@ class AuthorTest extends TestCase
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenSearchingWithInvalidParameter()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->find(['invalid_parameters' => 'value']);
     }
 

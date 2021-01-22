@@ -11,11 +11,12 @@
 
 namespace Textmaster\Functional;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Client;
 use Textmaster\HttpClient\HttpClient;
 use Textmaster\Manager;
 
-class ManagerTest extends \PHPUnit_Framework_TestCase
+class ManagerTest extends TestCase
 {
     const TEST_PROJECT_ID = '57065757f41f44001100000e';
     const TEST_DOCUMENT_ID = '57065d0ef41f44000e00008d';
@@ -25,11 +26,11 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
      */
     protected $client;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $httpClient = new HttpClient('http://GFHunwb2DHw:gqvE7aZS_JM@api.sandbox.textmaster.com/v1');
+        $httpClient = new HttpClient('https://GFHunwb2DHw:gqvE7aZS_JM@api.textmasterstaging.com/v1');
         $this->client = new Client($httpClient);
     }
 

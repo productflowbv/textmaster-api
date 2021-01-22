@@ -59,7 +59,7 @@ abstract class AbstractAdapter implements AdapterInterface
         $this->failIfDoesNotSupport($subject);
         $project = $document->getProject();
 
-        $original = array();
+        $original = [];
         if (ProjectInterface::ACTIVITY_COPYWRITING !== $project->getActivity()) {
             $original = $this->compareContent(
                 $subject,
@@ -130,10 +130,10 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Compare given content with the subject's one in the given language.
      *
-     * @param mixed  $subject
-     * @param array  $content
+     * @param mixed $subject
+     * @param array $content
      * @param string $language
-     * @param bool   $original
+     * @param bool $original
      *
      * @return array
      */
@@ -162,7 +162,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * Set properties on given subject.
      *
      * @param object $subject
-     * @param array  $properties Array of 'property' => 'value' pairs.
+     * @param array $properties Array of 'property' => 'value' pairs.
      * @param string $language
      */
     protected function setProperties($subject, array $properties, $language)
@@ -179,7 +179,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * Get properties from given subject.
      *
      * @param object $subject
-     * @param array  $properties Array of 'properties'
+     * @param array $properties Array of 'properties'
      * @param string $language
      * @param string $activity
      *
@@ -225,7 +225,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * Attach the subject to the document so it can be retrieved
      * through the above getter later on.
      *
-     * @param object            $subject
+     * @param object $subject
      * @param DocumentInterface $document
      */
     abstract protected function setSubjectOnDocument($subject, DocumentInterface $document);

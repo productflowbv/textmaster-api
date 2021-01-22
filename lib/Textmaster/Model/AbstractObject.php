@@ -38,7 +38,7 @@ abstract class AbstractObject
      * Constructor.
      *
      * @param Client $client the Textmaster client.
-     * @param mixed  $data   the id of the object or an array value to populate it.
+     * @param mixed $data the id of the object or an array value to populate it.
      */
     public function __construct(Client $client, $data = null)
     {
@@ -139,7 +139,7 @@ abstract class AbstractObject
      * the property is immutable.
      *
      * @param string $property
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @throws ObjectImmutableException
      */
@@ -178,14 +178,14 @@ abstract class AbstractObject
      * Dispatch an event.
      *
      * @param string $status
-     * @param array  $data   Optional data to dispatch with the event.
+     * @param array $data Optional data to dispatch with the event.
      */
     protected function dispatchEvent($status, array $data = [])
     {
-        $name = $this->getEventNamePrefix().'.'.$status;
+        $name = $this->getEventNamePrefix() . '.' . $status;
 
         $event = new GenericEvent($this, $data);
-        $this->client->getEventDispatcher()->dispatch($name, $event);
+        $this->client->getEventDispatcher()->dispatch($event, $name);
     }
 
     /**

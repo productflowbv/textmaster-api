@@ -64,7 +64,7 @@ abstract class AbstractApi implements ApiInterface
      */
     public function setPerPage($perPage)
     {
-        $this->perPage = (null === $perPage ? $perPage : (int) $perPage);
+        $this->perPage = (null === $perPage ? $perPage : (int)$perPage);
 
         return $this;
     }
@@ -82,7 +82,7 @@ abstract class AbstractApi implements ApiInterface
      */
     public function setPage($page)
     {
-        $this->page = (null === $page ? $page : (int) $page);
+        $this->page = (null === $page ? $page : (int)$page);
 
         return $this;
     }
@@ -100,9 +100,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a GET request with query parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     GET parameters.
-     * @param array  $requestHeaders Request Headers.
+     * @param string $path Request path.
+     * @param array $parameters GET parameters.
+     * @param array $requestHeaders Request Headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */
@@ -126,9 +126,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a HEAD request with query parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     HEAD parameters.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $parameters HEAD parameters.
+     * @param array $requestHeaders Request headers.
      *
      * @return Response
      */
@@ -144,9 +144,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a POST request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $body           POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $body POST parameters to be JSON encoded.
+     * @param array $requestHeaders Request headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */
@@ -162,9 +162,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a POST request with raw data.
      *
-     * @param string $path           Request path.
-     * @param array  $body           Request body.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $body Request body.
+     * @param array $requestHeaders Request headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */
@@ -182,9 +182,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a PATCH request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $body           POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $body POST parameters to be JSON encoded.
+     * @param array $requestHeaders Request headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */
@@ -202,9 +202,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a PUT request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $body           POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $body POST parameters to be JSON encoded.
+     * @param array $requestHeaders Request headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */
@@ -222,9 +222,9 @@ abstract class AbstractApi implements ApiInterface
     /**
      * Send a DELETE request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $body           POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path Request path.
+     * @param array $body POST parameters to be JSON encoded.
+     * @param array $requestHeaders Request headers.
      *
      * @return \GuzzleHttp\Psr7\Stream|mixed|\Psr\Http\Message\StreamInterface
      */

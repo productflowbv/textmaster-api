@@ -74,8 +74,7 @@ class HttpClient implements HttpClientInterface
                 ->withHeader('User-Agent', $options['user_agent'])
                 ->withHeader('Apikey', $options['key'])
                 ->withHeader('Date', $date->format('Y-m-d H:i:s'))
-                ->withHeader('Signature', sha1($options['secret'].$date->format('Y-m-d H:i:s')))
-            ;
+                ->withHeader('Signature', sha1($options['secret'] . $date->format('Y-m-d H:i:s')));
         }));
 
         $this->options = array_merge($options, ['handler' => $stack]);
@@ -175,7 +174,7 @@ class HttpClient implements HttpClientInterface
      *
      * @param string $httpMethod
      * @param string $path
-     * @param array  $headers
+     * @param array $headers
      *
      * @return RequestInterface
      */
@@ -191,7 +190,7 @@ class HttpClient implements HttpClientInterface
      */
     protected function getFinalPath($path)
     {
-        return $this->client->getConfig('base_uri')->getPath().'/'.$path;
+        return $this->client->getConfig('base_uri')->getPath() . '/' . $path;
     }
 
     /**

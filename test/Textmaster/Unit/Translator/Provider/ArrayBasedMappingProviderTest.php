@@ -11,10 +11,12 @@
 
 namespace Textmaster\Unit\Translator\Provider;
 
+use PHPUnit\Framework\TestCase;
+use Textmaster\Exception\MappingNotFoundException;
 use Textmaster\Translator\Provider\ArrayBasedMappingProvider;
 use Textmaster\Unit\Mock\MockTranslatable;
 
-class ArrayBasedMappingProviderTest extends \PHPUnit_Framework_TestCase
+class ArrayBasedMappingProviderTest extends TestCase
 {
     /**
      * @test
@@ -34,10 +36,10 @@ class ArrayBasedMappingProviderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\MappingNotFoundException
      */
     public function shouldNotSetWrongActivity()
     {
+        $this->expectException(MappingNotFoundException::class);
         $subjectMock = new MockTranslatable();
         $mappings = [
             'Textmaster\Unit\Mock\WrongClass' => ['name'],

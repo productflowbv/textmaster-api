@@ -28,9 +28,9 @@ class Callback extends AbstractApi
      * @deprecated Xml format is deprecated in favour of Json.
      *
      * @param string $userId Current user id
-     * @param string $event  One of 'waiting_assignment', 'completed'
-     * @param string $url    Callback Url
-     * @param string $url    Desired callback format
+     * @param string $event One of 'waiting_assignment', 'completed'
+     * @param string $url Callback Url
+     * @param string $url Desired callback format
      *
      * @return array
      */
@@ -44,7 +44,7 @@ class Callback extends AbstractApi
             throw new InvalidArgumentException(sprintf('"%s" is not a valid callback format.', $format));
         }
 
-        return $this->put('clients/users/'.rawurlencode($userId), [
+        return $this->put('clients/users/' . rawurlencode($userId), [
             'user' => [
                 'callback' => [
                     $event => [

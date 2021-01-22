@@ -11,6 +11,7 @@
 
 namespace Textmaster\Unit\Api\User;
 
+use Textmaster\Exception\InvalidArgumentException;
 use Textmaster\Unit\Api\TestCase;
 
 class CallbackTest extends TestCase
@@ -33,19 +34,19 @@ class CallbackTest extends TestCase
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenSettingCallbackWIthInvalidEvent()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->set(1, 'invalid_event', 'http://www.callbackurl.com', 'json');
     }
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenSettingCallbackWIthInvalidFormat()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->set(1, 'waiting_assignment', 'http://www.callbackurl.com', 'html');
     }
 

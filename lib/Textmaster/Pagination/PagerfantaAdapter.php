@@ -11,7 +11,7 @@
 
 namespace Textmaster\Pagination;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\Inflector;
 use Pagerfanta\Adapter\AdapterInterface;
 use Textmaster\Api\FilterableApiInterface;
 use Textmaster\Exception\InvalidArgumentException;
@@ -42,26 +42,21 @@ class PagerfantaAdapter implements AdapterInterface
      * @var array
      */
     protected $classes = [
-      'project' => 'Textmaster\Model\Project',
-      'document' => 'Textmaster\Model\Document',
+        'project' => 'Textmaster\Model\Project',
+        'document' => 'Textmaster\Model\Document',
     ];
 
     /**
      * PagerfantaAdapter constructor.
      *
      * @param FilterableApiInterface $api
-     * @param array                  $where
-     * @param array                  $order
-     * @param bool                   $asObjects
-     * @param array                  $classes
+     * @param array $where
+     * @param array $order
+     * @param bool $asObjects
+     * @param array $classes
      */
-    public function __construct(
-        FilterableApiInterface $api,
-        array $where = [],
-        array $order = [],
-        $asObjects = true,
-        array $classes = []
-    ) {
+    public function __construct(FilterableApiInterface $api, array $where = [], array $order = [], $asObjects = true, array $classes = [])
+    {
         $this->api = $api;
         $this->where = $where;
         $this->order = $order;
@@ -76,7 +71,7 @@ class PagerfantaAdapter implements AdapterInterface
     {
         $result = $this->api->filter($this->where, $this->order);
 
-        return (int) $result['count'];
+        return (int)$result['count'];
     }
 
     /**
@@ -117,7 +112,7 @@ class PagerfantaAdapter implements AdapterInterface
     /**
      * Transform the given array values into object.
      *
-     * @param array  $result
+     * @param array $result
      * @param string $resource
      *
      * @return array

@@ -11,12 +11,16 @@
 
 namespace Textmaster\Unit\Model;
 
+use PHPUnit\Framework\TestCase;
+use Textmaster\Exception\BadMethodCallException;
+use Textmaster\Exception\InvalidArgumentException;
+use Textmaster\Exception\ObjectImmutableException;
 use Textmaster\Model\AuthorInterface;
 use Textmaster\Model\DocumentInterface;
 use Textmaster\Model\Project;
 use Textmaster\Model\ProjectInterface;
 
-class ProjectTest extends \PHPUnit_Framework_TestCase
+class ProjectTest extends TestCase
 {
     protected $clientMock;
 
@@ -25,7 +29,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
      */
     protected $projectApiMock;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -259,7 +263,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
         $project = new Project($this->clientMock, '123456');
         $authors = $project->getPotentialAuthors();
 
-        $this->assertInternalType('array', $authors);
+        $this->assertTrue(is_array($authors));
         $this->assertCount(1, $authors);
 
         foreach ($authors as $author) {
@@ -270,10 +274,10 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\BadMethodCallException
      */
     public function shouldNotGetPotentialAuthorsOnUnsaved()
     {
+        $this->expectException(BadMethodCallException::class);
         $project = new Project($this->clientMock);
         $project->getPotentialAuthors();
     }
@@ -330,10 +334,10 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\ObjectImmutableException
      */
     public function shouldBeImmutable()
     {
+        $this->expectException(ObjectImmutableException::class);
         $values = [
             'id' => 'ID-IMMUTABLE',
             'status' => ProjectInterface::STATUS_IN_PROGRESS,
@@ -345,40 +349,40 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotSetWrongActivity()
     {
+        $this->expectException(InvalidArgumentException::class);
         $project = new Project($this->clientMock, '123456');
         $project->setActivity('wrong activity name');
     }
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\BadMethodCallException
      */
     public function shouldNotCreateDocumentOnUnsaved()
     {
+        $this->expectException(BadMethodCallException::class);
         $project = new Project($this->clientMock);
         $project->createDocument();
     }
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotSetWrongCallback()
     {
+        $this->expectException(InvalidArgumentException::class);
         $project = new Project($this->clientMock, '123456');
         $project->setCallback(['wrong_callback' => 'bad value']);
     }
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\BadMethodCallException
      */
     public function shouldNotLaunchImmutable()
     {
+        $this->expectException(BadMethodCallException::class);
         $values = [
             'id' => 'ID-IMMUTABLE',
             'status' => ProjectInterface::STATUS_IN_PROGRESS,

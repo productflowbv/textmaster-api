@@ -11,10 +11,11 @@
 
 namespace Textmaster\Unit\Translator\Factory;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Model\Project;
 use Textmaster\Translator\Factory\DefaultDocumentFactory;
 
-class DefaultDocumentFactoryTest extends \PHPUnit_Framework_TestCase
+class DefaultDocumentFactoryTest extends TestCase
 {
     /**
      * @test

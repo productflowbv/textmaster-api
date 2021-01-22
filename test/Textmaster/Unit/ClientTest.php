@@ -11,12 +11,13 @@
 
 namespace Textmaster\Unit;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Client;
 use Textmaster\Exception\BadMethodCallException;
 use Textmaster\Exception\InvalidArgumentException;
 use Textmaster\HttpClient\HttpClientInterface;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
     /**
      * @test
@@ -58,20 +59,20 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException InvalidArgumentException
      */
     public function shouldNotGetApiInstance()
     {
+        $this->expectException(InvalidArgumentException::class);
         $client = new Client($this->getHttpClientMock());
         $client->api('do_not_exist');
     }
 
     /**
      * @test
-     * @expectedException BadMethodCallException
      */
     public function shouldNotGetMagicApiInstance()
     {
+        $this->expectException(BadMethodCallException::class);
         $client = new Client($this->getHttpClientMock());
         $client->doNotExist();
     }
@@ -109,7 +110,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function getHttpClientMock(array $methods = [])
     {
         $methods = array_merge(
-            ['get', 'post', 'patch', 'put', 'delete', 'request', 'setOption', 'setHeaders', 'authenticate'],
+            ['get', 'post', 'patch', 'put', 'delete', 'request'],
             $methods
         );
 

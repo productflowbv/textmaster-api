@@ -72,7 +72,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
         empty($where) ?: $params['where'] = json_encode($where);
         empty($order) ?: $params['order'] = json_encode($order);
 
-        return $this->get($this->getPath().'/filter', $params);
+        return $this->get($this->getPath() . '/filter', $params);
     }
 
     /**
@@ -109,7 +109,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
      * @link https://fr.textmaster.com/documentation#documents-update-a-document
      *
      * @param string $documentId
-     * @param array  $params
+     * @param array $params
      *
      * @return array
      */
@@ -137,7 +137,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
      *
      * @link https://fr.textmaster.com/documentation#documents-complete-document
      *
-     * @param string      $documentId
+     * @param string $documentId
      * @param null|string $satisfaction One of 'neutral', 'positive' or 'negative'
      * @param null|string $message
      *
@@ -154,7 +154,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
             $params['message'] = $message;
         }
 
-        return $this->put($this->getPath($documentId).'/complete', $params);
+        return $this->put($this->getPath($documentId) . '/complete', $params);
     }
 
     /**
@@ -162,7 +162,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
      *
      * @link https://fr.textmaster.com/documentation#documents-complete-multiple-documents
      *
-     * @param array       $documentIds
+     * @param array $documentIds
      * @param null|string $satisfaction One of 'neutral', 'positive' or 'negative'
      * @param null|string $message
      *
@@ -181,7 +181,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
             $params['message'] = $message;
         }
 
-        return $this->post('clients/projects/'.rawurlencode($this->projectId).'/batch/documents/complete', $params);
+        return $this->post('clients/projects/' . rawurlencode($this->projectId) . '/batch/documents/complete', $params);
     }
 
     /**
@@ -195,7 +195,7 @@ class Document extends AbstractApi implements ObjectApiInterface, FilterableApiI
      */
     public function batchCreate(array $documents)
     {
-        return $this->post('clients/projects/'.rawurlencode($this->projectId).'/batch/documents', ['documents' => $documents]);
+        return $this->post('clients/projects/' . rawurlencode($this->projectId) . '/batch/documents', ['documents' => $documents]);
     }
 
     /**

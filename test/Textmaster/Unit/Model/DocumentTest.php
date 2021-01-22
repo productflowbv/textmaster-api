@@ -11,16 +11,20 @@
 
 namespace Textmaster\Unit\Model;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Api;
+use Textmaster\Exception\BadMethodCallException;
+use Textmaster\Exception\InvalidArgumentException;
+use Textmaster\Exception\ObjectImmutableException;
 use Textmaster\Model\Document;
 use Textmaster\Model\DocumentInterface;
 use Textmaster\Model\ProjectInterface;
 
-class DocumentTest extends \PHPUnit_Framework_TestCase
+class DocumentTest extends TestCase
 {
     protected $clientMock;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -405,10 +409,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotSetBadArrayOriginalContent()
     {
+        $this->expectException(InvalidArgumentException::class);
         $originalContent = [
             'translation1' => ['original_phrase' => 'Text to translate.'],
             'translation2' => ['bad_key' => 'An other text to translate.'],
@@ -420,10 +424,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\ObjectImmutableException
      */
     public function shouldBeImmutable()
     {
+        $this->expectException(ObjectImmutableException::class);
         $projectId = '654321';
         $valuesToCreate = [
             'id' => '123456',
@@ -437,10 +441,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotSetWrongCallback()
     {
+        $this->expectException(InvalidArgumentException::class);
         $callback = [
             'NOT_A_DOCUMENT_STATUS' => ['url' => 'http://my.host/bad_callback'],
         ];
@@ -451,10 +455,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\InvalidArgumentException
      */
     public function shouldNotCompleteWithWrongSatisfaction()
     {
+        $this->expectException(InvalidArgumentException::class);
         $projectId = '654321';
         $valuesToCreate = [
             'id' => '123456',
@@ -468,10 +472,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Textmaster\Exception\BadMethodCallException
      */
     public function shouldNotCompleteNotInReview()
     {
+        $this->expectException(BadMethodCallException::class);
         $projectId = '654321';
         $valuesToCreate = [
             'id' => '123456',

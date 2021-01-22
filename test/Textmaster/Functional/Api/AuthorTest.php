@@ -11,11 +11,12 @@
 
 namespace Textmaster\Functional\Api;
 
+use PHPUnit\Framework\TestCase;
 use Textmaster\Api\Author;
 use Textmaster\Client;
 use Textmaster\HttpClient\HttpClient;
 
-class AuthorTest extends \PHPUnit_Framework_TestCase
+class AuthorTest extends TestCase
 {
     /**
      * Wait time between calls because the sandbox environment is not as fast as prod.
@@ -32,11 +33,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
-        $httpClient = new HttpClient('http://GFHunwb2DHw:gqvE7aZS_JM@api.sandbox.textmaster.com/v1');
+        $httpClient = new HttpClient('https://GFHunwb2DHw:gqvE7aZS_JM@api.textmasterstaging.com/v1');
         $client = new Client($httpClient);
         $this->api = $client->author();
     }

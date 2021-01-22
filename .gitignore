@@ -4,3 +4,5 @@ composer.lock
 composer.phar
 vendor/*
 docker-compose.yml
+.phplint-cache
+.phpunit.result.cache

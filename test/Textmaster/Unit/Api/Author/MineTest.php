@@ -11,6 +11,7 @@
 
 namespace Textmaster\Unit\Api\Author;
 
+use Textmaster\Exception\InvalidArgumentException;
 use Textmaster\Unit\Api\TestCase;
 
 class MineTest extends TestCase
@@ -67,10 +68,10 @@ class MineTest extends TestCase
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenFilteringMyAuthorsByInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->all('invalid_status');
     }
 
@@ -118,10 +119,10 @@ class MineTest extends TestCase
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenUpdatingAnAuthorWithInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->update('53d7bf7d53ecaaf8aa00052e', 'invalid_status', 'Nice author');
     }
 
@@ -143,10 +144,10 @@ class MineTest extends TestCase
 
     /**
      * @test
-     * @expectedException Textmaster\Exception\InvalidArgumentException
      */
     public function shouldThrowExceptionWhenAddingAnAuthorToMyAuthorsWithInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->getApiMock()->add('53d7bf7d53ecaaf8aa00052e', 'invalid_status', 'Nice author');
     }
 
