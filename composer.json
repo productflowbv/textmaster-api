@@ -24,7 +24,7 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.3",
     "ext-curl": "*",
     "guzzlehttp/guzzle": "^6|^7",
     "pagerfanta/pagerfanta": "^v2.5.1",
