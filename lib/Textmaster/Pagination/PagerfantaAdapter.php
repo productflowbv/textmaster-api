@@ -12,6 +12,7 @@
 namespace Textmaster\Pagination;
 
 use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Pagerfanta\Adapter\AdapterInterface;
 use Textmaster\Api\FilterableApiInterface;
 use Textmaster\Exception\InvalidArgumentException;
@@ -120,7 +121,9 @@ class PagerfantaAdapter implements AdapterInterface
     private function toObjects(array $result, $resource)
     {
         $objects = [];
-        $singular = Inflector::singularize($resource);
+
+        $inflector = InflectorFactory::create()->build();
+        $singular = $inflector->singularize($resource);
 
         foreach ($result[$resource] as $values) {
             $object = new $this->classes[$singular]($this->api->getClient(), $values);
